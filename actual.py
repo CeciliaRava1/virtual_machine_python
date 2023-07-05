@@ -143,7 +143,10 @@ class MaquinaVirtual:
 
   # Declaracion de metodo para cargar archivo binario  - - - - - - - - - - - - - - - - - - - - - 
   def cargar_archivo(self, archivo):
-	  self.memoria[100:100+len(archivo)] = archivo
+    if((len(archivo) + 100) <= 1024):
+	    self.memoria[100:100+len(archivo)] = archivo
+    else:
+      raise ValueError('El archivo es muy grande')
 
   # Declaracion de metodo para obtener posicion de memoria  - - - - - - - - - - - - - - - - - - -
   def getPosicionMemoria(self, ip):
